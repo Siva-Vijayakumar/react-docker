@@ -1,15 +1,18 @@
-pipeline{
+pipeline {
     agent any
-    
-    stages{
-        stage ("checkout"){
-            steps{
-                git url : "https://github.com/Siva-Vijayakumar/react-docker.git"
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Siva-Vijayakumar/react-docker.git'
             }
         }
-        stage("Docker Build"){
-            steps{
-                sh "docker build -t react-docker:latest ."
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t react-docker:latest .'
             }
         }
 
@@ -22,14 +25,15 @@ pipeline{
             }
         }
 
-        stage("Docker Run"){
-            steps{
+        stage('Docker Run') {
+            steps {
                 sh '''
-                docker run -d
-                -p 5173:5173
+                docker run -d \
+                --name react-docker \
+                -p 5173:5173 \
                 react-docker:latest
                 '''
+            }
         }
     }
-}
 }
