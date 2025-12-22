@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage ("checkout"){
             steps{
-                git : ""
+                git : "https://github.com/Siva-Vijayakumar/react-docker.git"
             }
         }
         stage("Docker Build"){
