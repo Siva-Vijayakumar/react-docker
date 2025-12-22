@@ -4,17 +4,31 @@ pipeline{
     stages{
         stage ("checkout"){
             steps{
-                git : "https://github.com/Siva-Vijayakumar/react-docker.git"
+                git url : "https://github.com/Siva-Vijayakumar/react-docker.git"
             }
         }
         stage("Docker Build"){
             steps{
-                sh "docker build -t react-docker ."
+                sh "docker build -t react-docker:latest ."
             }
         }
+
+        stage('Stop Old Container') {
+            steps {
+                sh '''
+                docker stop react-docker || true
+                docker rm react-docker || true
+                '''
+            }
+        }
+
         stage("Docker Run"){
             steps{
-                sh "docker run -p 5173:5173 -v '$(pwd):/app' -v /app/node_modules react-docker"
+                sh '''
+                docker run -d
+                -p 5173:5173
+                react-docker:latest
+                '''
         }
     }
 }
