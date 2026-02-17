@@ -24,7 +24,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Docker Run') {
             steps {
                 sh '''
