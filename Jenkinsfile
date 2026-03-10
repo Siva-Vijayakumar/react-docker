@@ -1,49 +1,30 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_IMAGE = "sivav2004/react-docker"
-        DOCKER_TAG = "latest"
-    }
-
     stages {
 
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/Siva-Vijayakumar/react-docker.git'
+                url: 'https://github.com/Siva-Vijayakumar/react-docker.git'
             }
         }
 
-        stage('Docker Build') {
+        stage('Install Dependencies') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE:$DOCKER_TAG .'
+                sh 'npm install'
             }
         }
 
-        stage('Docker Login') {
+        stage('Build React App') {
             steps {
-                sh 'docker login -u sivav2004 -p siva@1222'
+                sh 'npm run build'
             }
         }
 
-        stage('Push Image') {
+        stage('Run Application') {
             steps {
-                sh 'docker push $DOCKER_IMAGE:$DOCKER_TAG'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh '''
-                docker stop react-docker || true
-                docker rm react-docker || true
-                docker run -d \
-                  --restart unless-stopped \
-                  --name react-docker \
-                  -p 80:80 \
-                  $DOCKER_IMAGE:$DOCKER_TAG
-                '''
+                sh 'npm run dev &'
             }
         }
     }
