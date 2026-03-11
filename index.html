@@ -11,80 +11,130 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sports World</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<title>Sports World</title>
 
-        header {
-            background: #1e90ff;
-            color: white;
-            padding: 20px;
-        }
+<style>
 
-        .container {
-            margin: 30px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        .card {
-            background: white;
-            margin: 20px auto;
-            padding: 20px;
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+body{
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    min-height:100vh;
+    color:white;
+}
 
-        .card h2 {
-            color: #333;
-        }
+header{
+    text-align:center;
+    padding:40px 20px;
+}
 
-        footer {
-            margin-top: 40px;
-            background: #222;
-            color: white;
-            padding: 10px;
-        }
-    </style>
+header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+header p{
+    opacity:0.9;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    color:#333;
+    width:300px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    transition:all 0.3s ease;
+    text-align:center;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+.icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.card h2{
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:0.95rem;
+    color:#555;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    background:rgba(0,0,0,0.3);
+}
+
+@media(max-width:768px){
+
+.container{
+    flex-direction:column;
+    align-items:center;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
 <header>
-    <h1>🏏 Sports World</h1>
-    <p>Latest Updates in Cricket, Football, and Tennis</p>
+<h1>⚡ Sports World</h1>
+<p>Live News • Match Updates • Global Sports</p>
 </header>
 
 <div class="container">
 
-    <div class="card">
-        <h2>Cricket</h2>
-        <p>India wins thrilling match with last-over six!</p>
-    </div>
+<div class="card">
+<div class="icon">🏏</div>
+<h2>Cricket</h2>
+<p>India wins a thrilling match with a last-over six in a dramatic finish!</p>
+</div>
 
-    <div class="card">
-        <h2>Football</h2>
-        <p>Champions League semi-final match ends 3-2.</p>
-    </div>
+<div class="card">
+<div class="icon">⚽</div>
+<h2>Football</h2>
+<p>Champions League semi-final ends with a stunning 3-2 comeback.</p>
+</div>
 
-    <div class="card">
-        <h2>Tennis</h2>
-        <p>Grand Slam tournament starts next week.</p>
-    </div>
+<div class="card">
+<div class="icon">🎾</div>
+<h2>Tennis</h2>
+<p>The Grand Slam tournament begins next week with top seeded players.</p>
+</div>
 
 </div>
 
 <footer>
-    <p>© 2026 Sports World</p>
+<p>© 2026 Sports World • All Rights Reserved</p>
 </footer>
 
 </body>
